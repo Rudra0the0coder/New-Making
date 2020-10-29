@@ -62,9 +62,7 @@ function draw() {
   helicopterSprite.setVelocity(0,0);
   packageSprite.setVelocity(0,0);
 
-  if(keyDown(DOWN_ARROW)) {
-	Matter.Body.setStatic(packageBody,false);
-	}	
+
 	
 	box1.display();
 	box2.display();
@@ -72,12 +70,23 @@ function draw() {
 
   Engine.update(engine);
  
-  if(keyDown(RIGHT_ARROW)){
-	
-	helicopterSprite.velocityX = 5;
+ 
 
-  }
+}
 
+function keyPressed(){
+	if (keyCode === LEFT_ARROW)
+	 {
+		helicopterSprite.x = helicopterSprite.x -20;
+	    translation={x:-20,y:0}
+		Matter.Body.translate(packageBody,translation);
+	}  else if (keyCode === RIGHT_ARROW) {
+		helicopterSprite.x = helicopterSprite.x +20;
+	    translation={x:20,y:0}
+		Matter.Body.translate(packageBody,translation);
+	}else   if(keyDown(DOWN_ARROW)) {
+		Matter.Body.setStatic(packageBody,false);
+		}	
 }
 
 
